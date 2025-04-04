@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>دریافت عکس عروسی</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+            direction: rtl; 
+            background-color: #f5f5f5;
+        }
+        input { 
+            padding: 10px; 
+            font-size: 16px; 
+            width: 250px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px;
+        }
+        button { 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            margin-right: 10px; 
+            cursor: pointer; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 4px;
+        }
+        img { 
+            margin-top: 30px; 
+            max-width: 80%; 
+            border: 2px solid #ccc; 
+            border-radius: 8px; 
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>برای دریافت عکس خود کد را وارد کنید</h2>
+        <input type="text" id="codeInput" placeholder="مثلاً SAD09409" />
+        <button onclick="showImage()">نمایش عکس</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function showImage() {
+            var code = document.getElementById("codeInput").value.trim();
+            if (code === "") {
+                alert("لطفاً کد را وارد کنید");
+                return;
+            }
+
+            // لینک عکس‌ها؛ فرض شده عکس‌ها در ریشه repository هستند
+            var imageUrl = "https://Iliyasad.github.io/wedding-photos/" + code + ".jpg";
+
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "<img src='" + imageUrl + "' alt='عکس شما' onerror='this.onerror=null;this.src=\"\";alert(\"کد یافت نشد\");' />";
+        }
+    </script>
+</body>
+</html>
